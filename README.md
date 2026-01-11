@@ -42,5 +42,5 @@ Ikuti panduan ini untuk menjalankan proyek di komputer lokal Anda.
 ### 1. Clone Repository
 Unduh source code atau clone repository ini:
 ```bash
-git clone [https://github.com/username-anda/artspace.git](https://github.com/username-anda/artspace.git)
+git clone [https://github.com/millicentmoon/artspace-uas-wulan.git]
 cd artspace                                                                

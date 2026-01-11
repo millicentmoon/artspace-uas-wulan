@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('title'); // Judul
-            $table->text('content'); // Isi Artikel
-            $table->date('published_date'); // Tanggal Publikasi
-            $table->string('author'); // Penulis
+            $table->string('title'); 
+            $table->text('content'); 
+            $table->date('published_date'); 
+            $table->string('author'); 
             $table->timestamps();
         });
     }

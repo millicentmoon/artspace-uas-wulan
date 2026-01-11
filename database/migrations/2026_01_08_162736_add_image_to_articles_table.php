@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('articles', function (Blueprint $table) {
-            // Menambahkan kolom image yang boleh kosong (nullable) setelah kolom content
+            
             $table->string('image')->nullable()->after('content');
         });
     }
@@ -23,7 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('articles', function (Blueprint $table) {
-            // Menghapus kolom image jika migrasi dibatalkan (rollback)
+         
             $table->dropColumn('image');
         });
     }

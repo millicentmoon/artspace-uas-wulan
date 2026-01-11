@@ -12,9 +12,9 @@ return new class extends Migration
   public function up(): void
 {
     Schema::table('articles', function (Blueprint $table) {
-        // Kolom untuk Gerakan Seni (misal: Seni Kuno)
+       
         $table->string('movement')->nullable()->after('author');
-        // Kolom untuk Bentuk Seni (misal: Lukisan)
+     
         $table->string('type')->nullable()->after('movement');
     });
 }
