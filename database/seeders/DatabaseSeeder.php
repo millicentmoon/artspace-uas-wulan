@@ -14,19 +14,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Buat User Admin (Agar dosen bisa langsung login)
+        
         User::create([
             'name' => 'Admin ArtSpace',
             'email' => 'admin@artspace.com',
             'password' => Hash::make('password'), 
-            'role' => 'admin',// Password-nya: password
+            'role' => 'admin',
         ]);
 
-        // 2. Buat Data Dummy Artikel yang Relevan dengan Tema Seni
+       
         $articles = [
             [
                 'title' => 'Rahasia di Balik Senyum Monalisa',
-                'movement' => 'Abad Pertengahan', // Renaissance biasanya masuk sini dalam konteks luas
+                'movement' => 'Abad Pertengahan', 
                 'type' => 'Lukisan',
                 'content' => 'Lukisan Monalisa karya Leonardo da Vinci adalah salah satu karya seni paling terkenal di dunia. Misteri senyumannya telah membingungkan para ahli selama berabad-abad. Teknik sfumato yang digunakan memberikan efek kabut yang halus pada wajahnya.',
             ],
@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
             [
                 'title' => 'Ekspresionisme Abstrak Jackson Pollock',
                 'movement' => 'Modern',
-                'type' => 'Desain Digital', // Kita anggap representasi modern
+                'type' => 'Desain Digital', 
                 'content' => 'Jackson Pollock dikenal dengan teknik "drip painting"-nya yang revolusioner. Ia tidak menggunakan kuas, melainkan meneteskan cat langsung ke kanvas. Ini adalah bentuk kebebasan ekspresi dalam seni modern yang mendobrak aturan tradisional.',
             ],
             [
@@ -62,15 +62,14 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
-        // Masukkan data artikel ke database
+        
         foreach ($articles as $item) {
             Article::create([
                 'title' => $item['title'],
                 'content' => $item['content'],
                 'author' => 'Admin ArtSpace',
                 'published_date' => now(),
-                'image' => null, // Biarkan null agar view otomatis menampilkan gambar random placeholder
-                'movement' => $item['movement'],
+                'image' => null,                                                                                     'movement' => $item['movement'],
                 'type' => $item['type'],
             ]);
         }

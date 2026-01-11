@@ -32,14 +32,11 @@
 * **Frontend:** Blade Templates + Tailwind CSS (CDN)
 * **Database:** MySQL
 * **Scripting:** PHP 8.2+
-
+                              
 ---
 
-## 🚀 Cara Instalasi (Langkah demi Langkah)
-
-Ikuti panduan ini untuk menjalankan proyek di komputer lokal Anda.
-
-### 1. Clone Repository
+                         
+###   Clone Repository                                                                  
 Unduh source code atau clone repository ini:
 ```bash
 git clone [https://github.com/millicentmoon/artspace-uas-wulan.git]
