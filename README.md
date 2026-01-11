@@ -43,4 +43,4 @@ Ikuti panduan ini untuk menjalankan proyek di komputer lokal Anda.
 Unduh source code atau clone repository ini:
 ```bash
 git clone [https://github.com/username-anda/artspace.git](https://github.com/username-anda/artspace.git)
-cd artspace
+cd artspace                                                                

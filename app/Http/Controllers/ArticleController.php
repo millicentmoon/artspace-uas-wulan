@@ -9,19 +9,17 @@ use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
-    // --- 1. HALAMAN DASHBOARD MEMBER (GRID VIEW) ---
+
    public function dashboard(Request $request)
     {
-        // LOGIKA BARU:
-        // Jika Admin -> Ambil artikel buatannya sendiri (untuk diedit)
-        // Jika Member -> Ambil SEMUA artikel (untuk dibaca)
+     
         if (Auth::user()->role === 'admin') {
             $query = Article::where('author', Auth::user()->name)->latest();
         } else {
-            $query = Article::latest(); // Member melihat semua data
+            $query = Article::latest(); 
         }
 
-        // --- SISA KODE KE BAWAH SAMA SEPERTI SEBELUMNYA ---
+   
         
         $search = $request->input('search');
         $category = $request->input('category');
@@ -54,23 +52,21 @@ class ArticleController extends Controller
         return view('dashboard', compact('featured', 'others', 'singlePost', 'searchMessage', 'recommendations'));
     }
 
-    // --- FIX: TAMBAHKAN METHOD INDEX ---
-    // Method ini menangani route /articles (articles.index)
-    // --- HALAMAN KELOLA ARTIKEL (TABEL ADMIN) ---
+  
     public function index()
     {
-        // Hanya Admin yang boleh akses halaman ini
+
         if(auth()->user()->role !== 'admin') {
             return redirect()->route('dashboard')->with('error', 'Hanya admin yang boleh masuk sini!');
         }
 
-        // Ambil semua artikel, urutkan dari yang terbaru, paginasi 10 per halaman
+                                                                                           
         $articles = Article::latest()->paginate(10);
 
         return view('articles.index', compact('articles'));
     }
 
-    // --- 2. HALAMAN PUBLIK / VISITOR HOME ---
+ 
     public function visitorHome(Request $request)
     {
         $search = $request->input('search');
@@ -100,13 +96,13 @@ class ArticleController extends Controller
         return view('visitor.index', compact('featured', 'others', 'singlePost', 'searchMessage', 'recommendations'));
     }
 
-    // --- 3. FORM TAMBAH ARTIKEL ---
+
     public function create()
     {
         return view('articles.create');
     }
 
-    // --- 4. PROSES SIMPAN ARTIKEL (STORE) ---
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -135,7 +131,7 @@ class ArticleController extends Controller
         return redirect()->route('dashboard')->with('success', 'Artikel berhasil diterbitkan! 🎨');
     }
 
-    // --- 5. FORM EDIT ARTIKEL ---
+    
     public function edit($id)
     {
         $article = Article::findOrFail($id);
@@ -147,7 +143,7 @@ class ArticleController extends Controller
         return view('articles.edit', compact('article'));
     }
 
-    // --- 6. PROSES UPDATE ARTIKEL ---
+    
     public function update(Request $request, $id)
     {
         $article = Article::findOrFail($id);
@@ -179,7 +175,7 @@ class ArticleController extends Controller
         return redirect()->route('dashboard')->with('success', 'Artikel berhasil diperbarui! 🚀');
     }
 
-    // --- 7. PROSES HAPUS ARTIKEL ---
+    
     public function destroy($id)
     {
         $article = Article::findOrFail($id);
@@ -193,7 +189,7 @@ class ArticleController extends Controller
         return redirect()->route('dashboard')->with('success', 'Artikel berhasil dihapus! 🗑️');
     }
 
-    // --- 8. HALAMAN BACA DETAIL (SHOW) ---
+    
     public function show($id)
     {
         $article = Article::findOrFail($id);
@@ -203,8 +199,7 @@ class ArticleController extends Controller
     }
     public function category($name)
     {
-        // Kita gunakan logika yang sama dengan visitorHome
-        // tapi kita paksa parameter 'category' diisi dengan $name dari URL
+        
         $request = new Request(['category' => $name]);
         
         return $this->visitorHome($request);
